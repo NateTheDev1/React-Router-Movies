@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 import SavedList from "./Movies/SavedList";
@@ -31,14 +31,12 @@ const App = () => {
   return (
     <div>
       <SavedList list={savedList} />
-      <Router>
-        <Route exact path="/">
-          <MovieList movies={movieList} />
-        </Route>
-        <Route exact path="/movies/:id">
-          <Movie id={1} />
-        </Route>
-      </Router>
+      <Route exact path="/">
+        <MovieList movies={movieList} />
+      </Route>
+      <Route exact path="/movies/:id" component={Movie}>
+        {/* <Movie id={1} /> */}
+      </Route>
     </div>
   );
 };
